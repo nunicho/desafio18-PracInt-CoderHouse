@@ -109,8 +109,11 @@ const cartsRouter = require("./router/carts.router.js");
 // Router de Handlebars
 const vistasRouter = require("./router/vistas.router.js");
 
-// Router de Session
+// Router de Users
+const usersRouter = require("./router/users.router.js");
 
+
+// Router de Session
 const sessionsRouter = require("./router/sessions.router.js");
 const { json } = require("body-parser");
 const { prototype } = require("module");
@@ -121,6 +124,7 @@ app.use("/api/fscarts", FScartsRouter);
 app.use("/api/products", productsRouter);
 app.use("/api/carts", cartsRouter);
 app.use("/api/sessions", sessionsRouter);
+app.use("/api/users", usersRouter);
 app.use("/", vistasRouter);
 
 // HANDLEBARS - inicialización

@@ -40,6 +40,61 @@ const getUserByEmail = async (email) => {
   }
 }
 
+const getUserById = async (req, res, next) => {
+  try {
+    let id = req.params.id;
+    if (!mongoose.Types.ObjectId.isValid(id))
+      throw new CustomError(
+        "ERROR_DATOS",
+        "ID inválido",
+        tiposDeError.ERROR_DATOS,
+        "El id proporcionado no es válido"
+      );
+    let usuarioDB = await UsersRepository.getUserById(id);
+    if (!usuarioDB)
+      throw new CustomError(
+        "USUARIO_NO_ENCONTRADO",
+        "Usuario no encontrado",
+        tiposDeError.USUARIO_NO_ENCONTRADO,
+        `El Usuario con ID ${id} no existe.`
+      );
+
+    res.locals.usuarioDB = usuarioDB;
+    next();
+  } catch (error) {
+    res.status(tiposDeError.ERROR_INTERNO_SERVIDOR).json({
+      mensaje: "Error interno del servidor",
+    });
+  }
+};
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+
+const getUserById= async (id) => {
+  try {    
+    const user = await UsersRepository.getUserById(id);
+    return user;
+  } catch (error) {
+    throw new CustomError(
+      "ERROR_OBTENER_USUARIO",
+      "Error al obtener usuario por Id",
+      tiposDeError.ERROR_INTERNO_SERVIDOR,
+      error.message
+    );
+  }
+};
+*/
 
 const getUsers = async (req, res) => {
   try {
@@ -104,29 +159,13 @@ const updatePassword = async (req, res) => {
     const newPassword = req.body.newPassword;
     let errorMessage = null;
 
-    // Decodificar el token para obtener la información necesaria
     const decodedToken = jwt.verify(token, secret);
 
-    // Verificar si el token ha expirado
 if (decodedToken.exp < Date.now() / 1000) {
-      // Almacenar el mensaje de error antes de la redirección
       errorMessage = "Error al actualizar la contraseña. - Token expirado";
-      // Redirigir a forgotPassword si el token ha expirado
       return res.redirect('/forgotPassword');
     }
     const user = await UsersRepository.getUserByEmail(decodedToken.email);
-    // if (
-    //   !user ||
-    //   user.reset_password_token !== token ||
-    //   user.reset_password_expires < Date.now()
-    // ) {
-    //   throw new CustomError(
-    //     "TOKEN_INVALIDO",
-    //     "Token inválido o caducado",
-    //     tiposDeError.ERROR_NO_AUTORIZADO,
-    //     "El token proporcionado no es válido o ha caducado."
-    //   );
-    // }
 
     const isSamePassword = await bcrypt.compare(newPassword, user.password);
 
@@ -146,11 +185,7 @@ if (decodedToken.exp < Date.now() / 1000) {
     user.reset_password_expires = null;
 
     await user.save();
-    // res.status(200).render("login", {
-    //   successPasswordMessage:
-    //     "Contraseña actualizada correctamente.",
-    //   estilo: "login.css",
-    // });
+
     res.status(200).send("Contraseña actualizada correctamente.");
   } catch (error) {
     if (error.name === "TOKEN_EXPIRADO") {
@@ -236,6 +271,7 @@ const processUserRoleChange = async (req, res) => {
 module.exports = {
   createUser,
   getUserByEmail,
+  getUserById,
   getUsers,
   updateUser,
   deleteUser,

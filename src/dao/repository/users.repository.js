@@ -9,6 +9,10 @@ class UserRepository {
     return await UsersMongoDao.getUserByEmail(email);
   }
 
+  async getUserById(id) {
+    return await UsersMongoDao.getUserById(id);
+  }
+
   async getUsers() {
     return await UsersMongoDao.getUsers();
   }

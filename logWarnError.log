@@ -1029,3 +1029,4 @@
 {"level":"info","message":"Inicio de sesión exitoso - Usuario: mauricio@gmail.com","timestamp":"2023-12-21T23:11:27.106Z"}
 {"level":"info","message":"Acceso exitoso a productos - Usuario","timestamp":"2023-12-21T23:11:29.549Z"}
 {"level":"info","message":"Acceso exitoso a la ruta de crear carrito","timestamp":"2023-12-21T23:11:38.761Z"}
+{"level":"info","message":"Acceso exitoso a la ruta de ver carritos","timestamp":"2023-12-25T23:33:57.440Z"}
