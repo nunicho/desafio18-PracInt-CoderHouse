@@ -32,7 +32,9 @@ router.get("/:id", usersController.getUserById, (req, res) => {
 
 router.post("/", async (req, res) => {
   try {
-    await usersController.createUser(req, res);
+    const userData = req.body; 
+    await usersController.createUser(userData);
+    return res.status(201).json({ message: "Usuario creado exitosamente" });
   } catch (error) {
     console.error(error);
     return res.status(500).json({ error: "Error al crear usuario" });

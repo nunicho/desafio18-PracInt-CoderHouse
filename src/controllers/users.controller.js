@@ -11,6 +11,7 @@ const bcrypt = require("bcrypt");
 const CustomError = require("../utils/customError.js");
 const tiposDeError = require("../utils/tiposDeError.js");
 
+/*
 const createUser = async (req, res) => {
   const userData = req.body;
   try {
@@ -21,6 +22,22 @@ const createUser = async (req, res) => {
     return res.status(500).json({ error: "Error al crear usuario" });
   }
 };
+*/
+
+const createUser = async (userData) => {
+  try {
+    const user = await UsersRepository.createUser(userData);
+    return user;
+  } catch (error) {
+    throw new CustomError(
+      "ERROR_CREAR_USUARIO",
+      "Error al crear usuario",
+      tiposDeError.ERROR_INTERNO_SERVIDOR,
+      error.message
+    );
+  }
+};
+
 
 const getUserByEmail = async (email) => {
   try {
