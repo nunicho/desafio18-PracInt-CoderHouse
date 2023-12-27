@@ -3,7 +3,7 @@ const router = Router();
 
 const usersController = require("../controllers/users.controller.js");
 const tiposDeError = require("../utils/tiposDeError.js");
-
+const CustomError = require("../utils/customError.js")
 //------------------------------------------------------------------------ PETICION GET
 
 router.get("/", async (req, res) => {
@@ -27,17 +27,19 @@ router.get("/:id", usersController.getUserById, (req, res) => {
     res.status(500).json({ error: "Error interno del servidor" });
   }
 });
-/*
+
 //------------------------------------------------------------------------ PETICION POST
 
 router.post("/", async (req, res) => {
   try {
-    await productosController.crearProducto(req, res);
+    await usersController.createUser(req, res);
   } catch (error) {
-    res.status(500).json({ error: "Error inesperado", detalle: error.message });
+    console.error(error);
+    return res.status(500).json({ error: "Error al crear usuario" });
   }
 });
 
+/*
 //------------------------------------------------------------------------ PETICION PUT
 
 router.put("/:id", async (req, res) => {

@@ -24,18 +24,7 @@ class UsersMongoDao {
   async getUserById(id) {
     return await UserModel.findById(id);
   }
-  /*
-  async getUserById(id) {
-    try {
-      const user = await UserModel.findOne(id);
-      return user;
-    } catch (error) {
-      throw new Error(
-        "Error al obtener usuario por ID desde la base de datos"
-      );
-    }
-  }
-*/
+
   async getUsers() {
     try {
       const users = await UserModel.find();
