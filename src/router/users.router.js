@@ -53,13 +53,13 @@ router.put("/:id", async (req, res) => {
 });
 
 //------------------------------------------------------------------------ PETICION DELETE
-/*
+
 router.delete("/:id", async (req, res) => {
   try {
-    await productosController.borrarProducto(req, res);
+    await usersController.deleteUser(req, res);
   } catch (error) {
     res.status(500).json({ error: "Error inesperado", detalle: error.message });
   }
 });
-*/
+
 module.exports = router;

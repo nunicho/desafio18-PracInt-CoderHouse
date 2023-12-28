@@ -143,33 +143,44 @@ const updateUser = async (req, res) => {
   }
 };
 
-/*
-const updateUser = async (req, res) => {
+const deleteUser = async (req, res) => {
   try {
-    const userId = req.params.userId;
-    const userData = req.body;
-    const updatedUser = await UsersRepository.updateUser(userId, userData);
-    if (!updatedUser) {
+    const id = req.params.id;
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      throw new CustomError(
+        "ERROR_DATOS",
+        "ID inválido",
+        tiposDeError.ERROR_DATOS,
+        "El ID proporcionado no es válido."
+      );
+    }
+
+    const user = await UsersRepository.getUserById(id);
+
+    if (!user) {
       throw new CustomError(
         "USUARIO_NO_ENCONTRADO",
         "Usuario no encontrado",
-        tiposDeError.ERROR_RECURSO_NO_ENCONTRADO,
-        `No se encontró un usuario con ID ${userId}`
+        tiposDeError.PRODUCTO_NO_ENCONTRADO,
+        `El usuario con ID ${id} no existe.`
       );
-    } else {
-      res.status(200).json(updatedUser);
     }
+    res.locals.nombreUsuario = user.email;
+    const resultado = await UsersRepository.deleteUser(id);
+
+    res
+      .status(200)
+      .json({ mensaje: "El Usuario fue correctamente eliminado", resultado });
   } catch (error) {
-    throw new CustomError(
-      "ERROR_ACTUALIZAR_USUARIO",
-      "Error al actualizar usuario",
-      tiposDeError.ERROR_INTERNO_SERVIDOR,
-      error.message
-    );
+    res.status(404).json({
+      mensaje: "Error, el usuario solicitado no pudo ser eliminado",
+    });
   }
 };
-*/
 
+
+/*
 const deleteUser = async (req, res) => {
   try {
     const userId = req.params.userId;
@@ -184,6 +195,7 @@ const deleteUser = async (req, res) => {
     );
   }
 };
+*/
 
 const secret = config.SECRET;
 
