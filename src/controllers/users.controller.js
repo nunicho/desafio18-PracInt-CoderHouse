@@ -10,19 +10,8 @@ const bcrypt = require("bcrypt");
 
 const CustomError = require("../utils/customError.js");
 const tiposDeError = require("../utils/tiposDeError.js");
+const usersRepository = require("../dao/repository/users.repository");
 
-/*
-const createUser = async (req, res) => {
-  const userData = req.body;
-  try {
-    const user = await UsersRepository.createUser(userData);
-    return res.json(user);
-  } catch (error) {
-    console.error(error);
-    return res.status(500).json({ error: "Error al crear usuario" });
-  }
-};
-*/
 
 const createUser = async (userData) => {
   try {
@@ -40,21 +29,6 @@ const createUser = async (userData) => {
     );
   }
 };
-/*
-const createUser = async (userData) => {
-  try {
-    const user = await UsersRepository.createUser(userData);
-    return user;
-  } catch (error) {
-    throw new CustomError(
-      "ERROR_CREAR_USUARIO",
-      "Error al crear usuario",
-      tiposDeError.ERROR_INTERNO_SERVIDOR,
-      error.message
-    );
-  }
-};
-*/
 
 const getUserByEmail = async (email) => {
   try {
@@ -115,6 +89,63 @@ const getUsers = async (req, res) => {
 
 const updateUser = async (req, res) => {
   try {
+    const id = req.params.id;
+    const user = req.body;
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      throw new CustomError(
+        "ERROR_DATOS",
+        "ID inválido",
+        tiposDeError.ERROR_DATOS,
+        "El ID proporcionado no es válido."
+      );
+    }
+
+    const userDB = await UsersRepository.updateUser(id);
+
+    if (!userDB) {
+      throw new CustomError(
+        "USUARIO_NO_ENCONTRADO", // CORREGIR
+        "Usuario no encontrado",
+        tiposDeError.PRODUCTO_NO_ENCONTRADO,
+        `El usuario con ID ${id} no existe.`
+      );
+    }
+
+    if (
+      !user.first_name||
+      !user.last_name ||
+      !user.email ||
+      !user.age ||
+      !user.password ||
+      !user.cart ||
+      !user.role
+    ) {
+      throw new CustomError(
+        "ERROR_DATOS",
+        "Faltan datos",
+        tiposDeError.ERROR_DATOS,
+        "Faltan datos obligatorios para editar el usuario."
+      );
+    }
+
+    const userEditado = await UsersRepository.updateUser(
+      id,
+      user
+    );
+
+    res.status(200).json({ userEditado });
+  } catch (error) {
+    res.status(error.codigo || tiposDeError.ERROR_INTERNO_SERVIDOR).json({
+      error: "Error inesperado",
+      detalle: error.message,
+    });
+  }
+};
+
+/*
+const updateUser = async (req, res) => {
+  try {
     const userId = req.params.userId;
     const userData = req.body;
     const updatedUser = await UsersRepository.updateUser(userId, userData);
@@ -137,6 +168,7 @@ const updateUser = async (req, res) => {
     );
   }
 };
+*/
 
 const deleteUser = async (req, res) => {
   try {

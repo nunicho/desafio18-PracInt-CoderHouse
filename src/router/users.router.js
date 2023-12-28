@@ -41,19 +41,19 @@ router.post("/", async (req, res) => {
   }
 });
 
-/*
+
 //------------------------------------------------------------------------ PETICION PUT
 
 router.put("/:id", async (req, res) => {
   try {
-    await productosController.editarProducto(req, res);
+    await usersController.updateUser(req, res);
   } catch (error) {
     res.status(500).json({ error: "Error inesperado", detalle: error.message });
   }
 });
 
 //------------------------------------------------------------------------ PETICION DELETE
-
+/*
 router.delete("/:id", async (req, res) => {
   try {
     await productosController.borrarProducto(req, res);

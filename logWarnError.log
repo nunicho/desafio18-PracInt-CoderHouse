@@ -1045,3 +1045,11 @@
 {"level":"info","message":"Acceso a la página de registro","timestamp":"2023-12-28T00:44:57.986Z"}
 {"level":"info","message":"Acceso a la página de inicio de sesión","timestamp":"2023-12-28T00:45:30.320Z"}
 {"level":"info","message":"Acceso a la página de inicio de sesión","timestamp":"2023-12-28T00:46:12.525Z"}
+{"level":"info","message":"Acceso a la página de registro","timestamp":"2023-12-28T00:52:43.149Z"}
+{"level":"info","message":"Acceso a la página de inicio de sesión","timestamp":"2023-12-28T00:53:14.716Z"}
+{"level":"info","message":"Inicio de sesión exitoso - Usuario: vandame@gmail.com","timestamp":"2023-12-28T00:53:24.610Z"}
+{"level":"info","message":"Logout exitoso - Mail: vandame@gmail.com ","timestamp":"2023-12-28T00:54:52.794Z"}
+{"level":"info","message":"Acceso a la página de inicio de sesión","timestamp":"2023-12-28T00:54:52.981Z"}
+{"level":"info","message":"Inicio de sesión exitoso - Usuario: hunt@gmail.com","timestamp":"2023-12-28T00:54:59.947Z"}
+{"level":"info","message":"Logout exitoso - Mail: hunt@gmail.com ","timestamp":"2023-12-28T00:55:03.405Z"}
+{"level":"info","message":"Acceso a la página de inicio de sesión","timestamp":"2023-12-28T00:55:03.589Z"}
