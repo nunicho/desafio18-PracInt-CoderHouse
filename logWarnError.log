@@ -1035,3 +1035,13 @@
 {"level":"info","message":"Acceso a la página de registro","timestamp":"2023-12-27T00:09:48.952Z"}
 {"level":"info","message":"Acceso a la página de registro","timestamp":"2023-12-27T02:11:59.529Z"}
 {"level":"info","message":"Acceso a la página de inicio de sesión","timestamp":"2023-12-27T02:13:12.805Z"}
+{"level":"info","message":"Inicio de sesión exitoso - Usuario: luigi@gmail.com","timestamp":"2023-12-28T00:31:13.034Z"}
+{"level":"info","message":"Logout exitoso - Mail: luigi@gmail.com ","timestamp":"2023-12-28T00:31:22.435Z"}
+{"level":"info","message":"Acceso a la página de inicio de sesión","timestamp":"2023-12-28T00:31:22.618Z"}
+{"level":"info","message":"Acceso a la página de registro","timestamp":"2023-12-28T00:42:57.352Z"}
+{"level":"info","message":"Acceso a la página de inicio de sesión","timestamp":"2023-12-28T00:43:32.937Z"}
+{"level":"info","message":"Acceso a la página de inicio de sesión","timestamp":"2023-12-28T00:44:36.677Z"}
+{"level":"info","message":"Acceso a la página de inicio de sesión","timestamp":"2023-12-28T00:44:47.171Z"}
+{"level":"info","message":"Acceso a la página de registro","timestamp":"2023-12-28T00:44:57.986Z"}
+{"level":"info","message":"Acceso a la página de inicio de sesión","timestamp":"2023-12-28T00:45:30.320Z"}
+{"level":"info","message":"Acceso a la página de inicio de sesión","timestamp":"2023-12-28T00:46:12.525Z"}
