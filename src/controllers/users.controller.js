@@ -2,11 +2,13 @@ const mongoose = require("mongoose");
 const UsersRepository = require("../dao/repository/users.repository")
 const UsuarioModelo = require("../dao/DB/models/users.modelo.js")
 
+const bcrypt = require("bcrypt");
+
 // DOTENV
 const config = require("../config/config.js");
 
 const jwt = require("jsonwebtoken");
-const bcrypt = require("bcrypt");
+
 
 const CustomError = require("../utils/customError.js");
 const tiposDeError = require("../utils/tiposDeError.js");
@@ -16,7 +18,7 @@ const usersRepository = require("../dao/repository/users.repository");
 const createUser = async (userData) => {
   try {
     const { password } = userData;
-    const hashedPassword = await bcrypt.hash(password, 10); 
+    const hashedPassword = await bcrypt.hash(password, 10);
     userData.password = hashedPassword;
     const user = await UsersRepository.createUser(userData);
     return user;
@@ -101,23 +103,22 @@ const updateUser = async (req, res) => {
       );
     }
 
-    const userDB = await UsersRepository.updateUser(id);
+    const userDB = await UsersRepository.getUserById(id);
 
     if (!userDB) {
       throw new CustomError(
-        "USUARIO_NO_ENCONTRADO", // CORREGIR
+        "USUARIO_NO_ENCONTRADO",
         "Usuario no encontrado",
-        tiposDeError.PRODUCTO_NO_ENCONTRADO,
+        tiposDeError.USUARIO_NO_ENCONTRADO,
         `El usuario con ID ${id} no existe.`
       );
     }
 
     if (
-      !user.first_name||
+      !user.first_name ||
       !user.last_name ||
       !user.email ||
       !user.age ||
-      !user.password ||
       !user.cart ||
       !user.role
     ) {
@@ -129,10 +130,14 @@ const updateUser = async (req, res) => {
       );
     }
 
-    const userEditado = await UsersRepository.updateUser(
-      id,
-      user
-    );
+    // Verificar si se proporcionó una nueva contraseña
+    if (user.password) {
+      // Aplicar Bcrypt a la nueva contraseña
+      const hashedPassword = await bcrypt.hash(user.password, 10);
+      user.password = hashedPassword;
+    }
+
+    const userEditado = await UsersRepository.updateUser(id, user);
 
     res.status(200).json({ userEditado });
   } catch (error) {
