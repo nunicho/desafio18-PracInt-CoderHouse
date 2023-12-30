@@ -2,10 +2,10 @@ const express = require("express");
 const router = express.Router();
 const config = require("../config/config.js");
 const util = require("../util.js");
+const usersController = require("../controllers/users.controller.js");
+
 
 //PARA TRAER PASSPORT
-
-
 
 const passport = require("passport");
 
@@ -169,6 +169,36 @@ router.post("/loginAdmin", async (req, res) => {
   }
 });
 
+
+router.get("/", async (req, res) => {
+  try {
+    await usersController.getUsers(req, res);
+  } catch (error) {
+    console.error("Error al procesar la solicitud:", error);
+    res.status(500).json({ error: "Error interno del servidor" });
+  }
+});
+
+router.get("/:id", usersController.getUserById, (req, res) => {
+  try {
+    const usuarioDB = res.locals.usuarioDB;
+    if (!usuarioDB) {
+      return res.status(404).send("Usuario no encontrado");
+    }
+    res.header("Content-type", "application/json");
+    res.status(200).json({ usuarioDB });
+  } catch (error) {
+    res.status(500).json({ error: "Error interno del servidor" });
+  }
+});
+
+router.put("/:id", async (req, res) => {
+  try {
+    await usersController.updateUser(req, res);
+  } catch (error) {
+    res.status(500).json({ error: "Error inesperado", detalle: error.message });
+  }
+});
 
 module.exports = router;
 
