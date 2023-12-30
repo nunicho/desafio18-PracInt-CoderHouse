@@ -1094,3 +1094,4 @@
 {"level":"info","message":"Inicio de sesión exitoso - Usuario: guerrero@gmail.com","timestamp":"2023-12-30T00:54:36.231Z"}
 {"level":"info","message":"Logout exitoso - Mail: guerrero@gmail.com ","timestamp":"2023-12-30T00:54:40.068Z"}
 {"level":"info","message":"Acceso a la página de inicio de sesión","timestamp":"2023-12-30T00:54:40.258Z"}
+{"level":"info","message":"Acceso a la página de inicio de sesión","timestamp":"2023-12-30T00:57:33.663Z"}
