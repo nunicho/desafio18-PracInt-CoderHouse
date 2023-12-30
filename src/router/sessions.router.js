@@ -4,6 +4,9 @@ const config = require("../config/config.js");
 const util = require("../util.js");
 
 //PARA TRAER PASSPORT
+
+
+
 const passport = require("passport");
 
 router.get("/errorRegistro", (req, res) => {
