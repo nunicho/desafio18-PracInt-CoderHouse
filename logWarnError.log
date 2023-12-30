@@ -1091,3 +1091,6 @@
 {"level":"info","message":"Inicio de sesión exitoso - Usuario: guerrero@gmail.com","timestamp":"2023-12-30T00:46:44.472Z"}
 {"level":"info","message":"Logout exitoso - Mail: guerrero@gmail.com ","timestamp":"2023-12-30T00:46:47.795Z"}
 {"level":"info","message":"Acceso a la página de inicio de sesión","timestamp":"2023-12-30T00:46:47.982Z"}
+{"level":"info","message":"Inicio de sesión exitoso - Usuario: guerrero@gmail.com","timestamp":"2023-12-30T00:54:36.231Z"}
+{"level":"info","message":"Logout exitoso - Mail: guerrero@gmail.com ","timestamp":"2023-12-30T00:54:40.068Z"}
+{"level":"info","message":"Acceso a la página de inicio de sesión","timestamp":"2023-12-30T00:54:40.258Z"}

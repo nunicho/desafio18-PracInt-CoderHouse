@@ -130,9 +130,7 @@ const updateUser = async (req, res) => {
       );
     }
 
-    // Verificar si se proporcionó una nueva contraseña
     if (user.password) {
-      // Aplicar Bcrypt a la nueva contraseña
       const hashedPassword = await bcrypt.hash(user.password, 10);
       user.password = hashedPassword;
     }

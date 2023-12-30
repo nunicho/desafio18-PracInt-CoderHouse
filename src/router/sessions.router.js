@@ -200,5 +200,13 @@ router.put("/:id", async (req, res) => {
   }
 });
 
+router.delete("/:id", async (req, res) => {
+  try {
+    await usersController.deleteUser(req, res);
+  } catch (error) {
+    res.status(500).json({ error: "Error inesperado", detalle: error.message });
+  }
+});
+
 module.exports = router;
 
