@@ -690,20 +690,23 @@ router.post("/updatePassword/:token", UsersController.updatePassword);
 
 
 
-
 //---------------------------------------------------------------- RUTA PARA CAMBIAR ROLE---------------//
 
-router.get("/api/users/premium/", UsersController.toggleUserRole);
 
+const renderCambiaRole = (res, options) => {
+    res.render("cambiaRole", options);
+};
 
-// router.get("/api/users/premium/", auth, UsersController.toggleUserRole);
-
+router.get("/api/users/premium/", auth, (req, res) => {
+  UsersController.userRoleVista(req, res, renderCambiaRole);
+});
 
 router.post(
   "/api/users/premium/:id",
   auth,
-  UsersController.processUserRoleChange
+  UsersController.changeUserRoleEnVista
 );
+
 
 
 module.exports = router;

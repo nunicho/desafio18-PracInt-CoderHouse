@@ -253,7 +253,41 @@
     }
   };
 
-  const toggleUserRole = async (req, res) => {
+  const userRoleVista = async (req, res, render) => {
+    try {
+      const userId = req.params.id;
+      const { newRole } = req.body;
+
+      if (!["user", "premium"].includes(newRole)) {
+        throw new Error("Rol no válido");
+      }
+      const usuario = await UsuarioModelo.findById(userId);
+
+      if (!usuario) {
+        throw new Error("Usuario no encontrado");
+      }
+
+      usuario.role = newRole;
+
+      await usuario.save();
+
+      render(res, {
+        title: "Cambio de Rol Exitoso",
+        success: true,
+        message: `Se ha cambiado el rol del usuario ${usuario.nombre} a ${newRole}`,
+      });
+    } catch (error) {
+      render(res, {
+        title: "Error al Cambiar el Rol",
+        success: false,
+        error: error.message,
+      });
+    }
+  };
+  
+
+  /*
+const toggleUserRole = async (req, res) => {
     try {
       const userId = req.params.id;
       const { newRole } = req.body;
@@ -287,36 +321,7 @@
       });
     }
   };
-  const processUserRoleChange = async (req, res) => {
-    try {
-      const userId = req.params.id;
-      const { newRole } = req.body;
-
-      if (!["user", "premium"].includes(newRole)) {
-        throw new Error("Rol no válido");
-      }
-
-      const usuario = await UsuarioModelo.findById(userId);
-      if (!usuario) {
-        throw new Error("Usuario no encontrado");
-      }
-
-      usuario.role = newRole;
-
-      await usuario.save();
-
-      req.session.usuario.role = newRole;
-
-      res.redirect(`/`);
-    } catch (error) {
-      
-      res.render("cambiaRole", {
-        title: "Error al Cambiar el Rol",
-        success: false,
-        error: error.message,
-      });
-    }
-  };
+  */
 
   const getUserRoleById = async (req, res) => {
     try {
@@ -353,7 +358,8 @@
     }
   };
 
-  const changeUserRole = async (req, res) => {
+  
+const changeUserRole = async (req, res) => {
     try {
       const userId = req.params.id;
 
@@ -376,8 +382,7 @@
           `El usuario con ID ${userId} no existe.`
         );
       }
-
-      // Cambiar el role
+      
       usuario.role = usuario.role === "user" ? "premium" : "user";
       await usuario.save();
 
@@ -393,10 +398,36 @@
     }
   };
 
-  module.exports = {
-    // ... tus otras funciones
-    toggleUserRole,
+  const changeUserRoleEnVista = async (req, res) => {
+    try {
+      const userId = req.params.id;
+      const { newRole } = req.body;
+
+      if (!["user", "premium"].includes(newRole)) {
+        throw new Error("Rol no válido");
+      }
+
+      const usuario = await UsuarioModelo.findById(userId);
+      if (!usuario) {
+        throw new Error("Usuario no encontrado");
+      }
+
+      usuario.role = newRole;
+
+      await usuario.save();
+
+      req.session.usuario.role = newRole;
+
+      res.redirect(`/`);
+    } catch (error) {
+      res.render("cambiaRole", {
+        title: "Error al Cambiar el Rol",
+        success: false,
+        error: error.message,
+      });
+    }
   };
+  
 
   module.exports = {
     createUser,
@@ -406,9 +437,9 @@
     updateUser,
     deleteUser,
     updatePassword,
-    toggleUserRole,
-    processUserRoleChange,
+    userRoleVista,
     getUserRoleById,
-    changeUserRole,  
+    changeUserRole,
+    changeUserRoleEnVista,
   };
 

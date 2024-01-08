@@ -1105,3 +1105,16 @@
 {"level":"info","message":"Acceso a la página de inicio de sesión","timestamp":"2024-01-08T13:02:30.666Z"}
 {"level":"info","message":"Acceso a la página de inicio de sesión","timestamp":"2024-01-08T13:35:26.804Z"}
 {"level":"info","message":"Inicio de sesión exitoso - Usuario: mauricio@gmail.com","timestamp":"2024-01-08T14:47:16.941Z"}
+{"level":"error","message":"Error al manejar la ruta de logout - Detalle: Cannot read properties of undefined (reading 'email')","timestamp":"2024-01-08T15:58:59.851Z"}
+{"level":"info","message":"Acceso a la página de inicio de sesión","timestamp":"2024-01-08T15:59:04.930Z"}
+{"level":"info","message":"Inicio de sesión exitoso - Usuario: mauricio@gmail.com","timestamp":"2024-01-08T15:59:10.771Z"}
+{"level":"info","message":"Acceso exitoso al perfil - Usuario: mauricio@gmail.com","timestamp":"2024-01-08T16:11:08.057Z"}
+{"level":"info","message":"Acceso exitoso al perfil - Usuario: mauricio@gmail.com","timestamp":"2024-01-08T16:13:29.525Z"}
+{"level":"info","message":"Acceso exitoso al perfil - Usuario: mauricio@gmail.com","timestamp":"2024-01-08T16:21:18.643Z"}
+{"level":"info","message":"Acceso exitoso al perfil - Usuario: mauricio@gmail.com","timestamp":"2024-01-08T16:21:22.010Z"}
+{"level":"info","message":"Acceso exitoso al perfil - Usuario: mauricio@gmail.com","timestamp":"2024-01-08T16:21:35.144Z"}
+{"level":"info","message":"Acceso a la página de inicio de sesión","timestamp":"2024-01-08T16:22:05.877Z"}
+{"level":"info","message":"Acceso exitoso al perfil - Usuario: mauricio@gmail.com","timestamp":"2024-01-08T16:24:32.211Z"}
+{"level":"info","message":"Acceso exitoso al perfil - Usuario: mauricio@gmail.com","timestamp":"2024-01-08T16:24:45.164Z"}
+{"level":"info","message":"Acceso exitoso al perfil - Usuario: mauricio@gmail.com","timestamp":"2024-01-08T17:18:56.434Z"}
+{"level":"info","message":"Acceso exitoso al perfil - Usuario: mauricio@gmail.com","timestamp":"2024-01-08T17:46:32.612Z"}
