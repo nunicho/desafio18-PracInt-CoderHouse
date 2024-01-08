@@ -1,65 +1,14 @@
 const Router = require("express").Router;
 const router = Router();
 
-const usersController = require("../controllers/users.controller.js");
-const tiposDeError = require("../utils/tiposDeError.js");
-const CustomError = require("../utils/customError.js")
-//------------------------------------------------------------------------ PETICION GET
+const UsersController = require("../controllers/users.controller.js");
 
-router.get("/", async (req, res) => {
-  try {
-    await usersController.getUsers(req, res);
-  } catch (error) {
-    console.error("Error al procesar la solicitud:", error);
-    res.status(500).json({ error: "Error interno del servidor" });
-  }
-});
-
-router.get("/:id", usersController.getUserById, (req, res) => {
-  try {
-    const usuarioDB = res.locals.usuarioDB;
-    if (!usuarioDB) {
-      return res.status(404).send("Usuario no encontrado");
-    }
-    res.header("Content-type", "application/json");
-    res.status(200).json({ usuarioDB });
-  } catch (error) {
-    res.status(500).json({ error: "Error interno del servidor" });
-  }
-});
-
-//------------------------------------------------------------------------ PETICION POST
-
-router.post("/", async (req, res) => {
-  try {
-    const userData = req.body; 
-    await usersController.createUser(userData);
-    return res.status(201).json({ message: "Usuario creado exitosamente" });
-  } catch (error) {
-    console.error(error);
-    return res.status(500).json({ error: "Error al crear usuario" });
-  }
-});
+router.get("/premium/:id", UsersController.getUserRoleById);
 
 
-//------------------------------------------------------------------------ PETICION PUT
-
-router.put("/:id", async (req, res) => {
-  try {
-    await usersController.updateUser(req, res);
-  } catch (error) {
-    res.status(500).json({ error: "Error inesperado", detalle: error.message });
-  }
-});
-
-//------------------------------------------------------------------------ PETICION DELETE
-
-router.delete("/:id", async (req, res) => {
-  try {
-    await usersController.deleteUser(req, res);
-  } catch (error) {
-    res.status(500).json({ error: "Error inesperado", detalle: error.message });
-  }
-});
+router.post(
+  "/premium/:id/changeRole",  
+  UsersController.changeUserRole
+);
 
 module.exports = router;

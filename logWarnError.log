@@ -1095,3 +1095,13 @@
 {"level":"info","message":"Logout exitoso - Mail: guerrero@gmail.com ","timestamp":"2023-12-30T00:54:40.068Z"}
 {"level":"info","message":"Acceso a la página de inicio de sesión","timestamp":"2023-12-30T00:54:40.258Z"}
 {"level":"info","message":"Acceso a la página de inicio de sesión","timestamp":"2023-12-30T00:57:33.663Z"}
+{"level":"info","message":"Acceso a la página de inicio de sesión","timestamp":"2024-01-08T12:34:37.933Z"}
+{"level":"info","message":"Inicio de sesión exitoso - Usuario: mauricio@gmail.com","timestamp":"2024-01-08T12:34:44.330Z"}
+{"level":"info","message":"Logout exitoso - Mail: mauricio@gmail.com ","timestamp":"2024-01-08T12:34:46.713Z"}
+{"level":"info","message":"Acceso a la página de inicio de sesión","timestamp":"2024-01-08T12:34:46.921Z"}
+{"level":"info","message":"Acceso a la página de inicio de sesión","timestamp":"2024-01-08T12:47:09.713Z"}
+{"level":"info","message":"Inicio de sesión exitoso - Usuario: kafka@gmail.com","timestamp":"2024-01-08T13:02:26.235Z"}
+{"level":"info","message":"Logout exitoso - Mail: kafka@gmail.com ","timestamp":"2024-01-08T13:02:30.449Z"}
+{"level":"info","message":"Acceso a la página de inicio de sesión","timestamp":"2024-01-08T13:02:30.666Z"}
+{"level":"info","message":"Acceso a la página de inicio de sesión","timestamp":"2024-01-08T13:35:26.804Z"}
+{"level":"info","message":"Inicio de sesión exitoso - Usuario: mauricio@gmail.com","timestamp":"2024-01-08T14:47:16.941Z"}
