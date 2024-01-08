@@ -42,3 +42,4 @@
 {"level":"error","message":"Error al manejar la ruta de logout - Detalle: Cannot read properties of undefined (reading 'email')","timestamp":"2023-12-21T00:10:30.054Z"}
 {"level":"error","message":"Error al manejar la ruta de logout - Detalle: Cannot read properties of undefined (reading 'email')","timestamp":"2023-12-21T00:16:02.952Z"}
 {"level":"error","message":"Error al manejar la ruta de logout - Detalle: Cannot read properties of undefined (reading 'email')","timestamp":"2024-01-08T15:58:59.857Z"}
+{"level":"error","message":"Error al manejar la ruta de logout - Detalle: Cannot read properties of undefined (reading 'email')","timestamp":"2024-01-08T18:53:57.664Z"}

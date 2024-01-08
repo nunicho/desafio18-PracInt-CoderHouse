@@ -1118,3 +1118,10 @@
 {"level":"info","message":"Acceso exitoso al perfil - Usuario: mauricio@gmail.com","timestamp":"2024-01-08T16:24:45.164Z"}
 {"level":"info","message":"Acceso exitoso al perfil - Usuario: mauricio@gmail.com","timestamp":"2024-01-08T17:18:56.434Z"}
 {"level":"info","message":"Acceso exitoso al perfil - Usuario: mauricio@gmail.com","timestamp":"2024-01-08T17:46:32.612Z"}
+{"level":"error","message":"Error al manejar la ruta de logout - Detalle: Cannot read properties of undefined (reading 'email')","timestamp":"2024-01-08T18:53:57.662Z"}
+{"level":"info","message":"Acceso a la página de inicio de sesión","timestamp":"2024-01-08T18:55:59.416Z"}
+{"level":"info","message":"Acceso a la página de registro","timestamp":"2024-01-08T18:56:03.089Z"}
+{"level":"info","message":"Acceso a la página de inicio de sesión","timestamp":"2024-01-08T19:00:02.084Z"}
+{"level":"info","message":"Acceso a la página de registro","timestamp":"2024-01-08T19:11:03.906Z"}
+{"level":"info","message":"Acceso a la página de inicio de sesión","timestamp":"2024-01-08T19:11:34.681Z"}
+{"level":"info","message":"Inicio de sesión exitoso - Usuario: tetera@gmail.com","timestamp":"2024-01-08T19:11:50.112Z"}
