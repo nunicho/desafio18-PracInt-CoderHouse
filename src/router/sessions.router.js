@@ -71,6 +71,40 @@ router.post("/login", util.passportCall("loginLocal"), (req, res) => {
   }
 });
 
+router.get("/logout", async (req, res) => {
+  try {
+    const usuario = req.session.usuario;
+
+    if (usuario && usuario._id) {
+      await usersController.updateLastConnection(usuario._id);
+
+      req.logger.info(`Logout exitoso - Mail: ${usuario.email}`);
+      req.session.destroy((e) => {
+        if (e) {
+          req.logger.error(
+            `Error al destruir la sesión - Detalle: ${e.message}`
+          );
+          res.status(500).send("Error interno del servidor");
+        } else {
+          res.redirect("/login?mensaje=Logout correcto!");
+        }
+      });
+    } else {
+      req.logger.error(
+        `No se encontró información de usuario en la sesión durante el logout`
+      );
+      res.status(500).send("Error interno del servidor");
+    }
+  } catch (error) {
+    req.logger.error(
+      `Error al manejar la ruta de logout - Detalle: ${error.message}`
+    );
+    res.status(500).send("Error interno del servidor");
+  }
+});
+
+
+/*
 router.get("/logout", (req, res) => {
   try {
     const usuario = req.session.usuario.email;
@@ -91,6 +125,8 @@ router.get("/logout", (req, res) => {
     res.status(500).send("Error interno del servidor");
   }
 });
+*/
+
 
 router.get(
   "/github",

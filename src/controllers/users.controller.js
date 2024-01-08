@@ -183,23 +183,6 @@
   };
 
 
-  /*
-  const deleteUser = async (req, res) => {
-    try {
-      const userId = req.params.userId;
-      await UsersRepository.deleteUser(userId);
-      res.status(204).end();
-    } catch (error) {
-      throw new CustomError(
-        "ERROR_ELIMINAR_USUARIO",
-        "Error al eliminar usuario",
-        tiposDeError.ERROR_INTERNO_SERVIDOR,
-        error.message
-      );
-    }
-  };
-  */
-
   const secret = config.SECRET;
 
 
@@ -429,6 +412,34 @@ const changeUserRole = async (req, res) => {
   };
   
 
+  const updateLastConnection = async (userId) => {
+    try {
+      const updatedUser = await UsuarioModelo.findByIdAndUpdate(
+        userId,
+        { last_connection: new Date() },
+        { new: true }
+      );
+
+      if (!updatedUser) {
+        throw new CustomError(
+          "USUARIO_NO_ENCONTRADO",
+          "Usuario no encontrado",
+          tiposDeError.USUARIO_NO_ENCONTRADO,
+          `El usuario con ID ${userId} no existe.`
+        );
+      }
+
+      return updatedUser;
+    } catch (error) {
+      throw new CustomError(
+        "ERROR_ACTUALIZACION",
+        "Error al actualizar last_connection",
+        tiposDeError.ERROR_ACTUALIZACION,
+        error.message
+      );
+    }
+  };
+
   module.exports = {
     createUser,
     getUserByEmail,
@@ -441,5 +452,6 @@ const changeUserRole = async (req, res) => {
     getUserRoleById,
     changeUserRole,
     changeUserRoleEnVista,
+    updateLastConnection
   };
 

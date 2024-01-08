@@ -1125,3 +1125,7 @@
 {"level":"info","message":"Acceso a la página de registro","timestamp":"2024-01-08T19:11:03.906Z"}
 {"level":"info","message":"Acceso a la página de inicio de sesión","timestamp":"2024-01-08T19:11:34.681Z"}
 {"level":"info","message":"Inicio de sesión exitoso - Usuario: tetera@gmail.com","timestamp":"2024-01-08T19:11:50.112Z"}
+{"level":"info","message":"Logout exitoso - Mail: tetera@gmail.com ","timestamp":"2024-01-08T19:25:13.534Z"}
+{"level":"info","message":"Acceso a la página de inicio de sesión","timestamp":"2024-01-08T19:25:13.743Z"}
+{"level":"info","message":"Inicio de sesión exitoso - Usuario: tetera@gmail.com","timestamp":"2024-01-08T19:53:34.749Z"}
+{"level":"error","message":"Error al manejar la ruta de logout - Detalle: modeloUsers is not defined","timestamp":"2024-01-08T19:54:15.126Z"}
