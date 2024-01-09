@@ -1,4 +1,30 @@
+    <span><a href="/">Regresar</a></span>
+
+    <h1>subir archivos con multer (con storage)</h1>
+
+    <form action="/api/users/{{usuario._id}}/documents" method="post" enctype="multipart/form-data">
+        <input type="file" name="foto" />
+        <input type="text" name="nombre" placeholder="Documentos">
+
+        <input type="submit" value="Registrar">
+    </form>
+
+        <form action="/api/users/{{usuario._id}}/documents/products" method="post" enctype="multipart/form-data">
+        <input type="file" name="foto" />
+        <input type="text" name="nombre" placeholder="Foto de producto">
+
+        <input type="submit" value="Registrar">
+    </form>
+        </form>
+
+        <form action="/api/users/{{usuario._id}}/documents/profiles" method="post" enctype="multipart/form-data">
+        <input type="file" name="foto" />
+        <input type="text" name="nombre" placeholder="Foto de profile">
+
+        <input type="submit" value="Registrar">
+    </form>
     
+{{!-- 
     <span><a href="/">Regresar</a></span>
 
     <h1>subir archivos con multer (con storage)</h1>
@@ -8,4 +34,4 @@
         <input type="text" name="nombre" placeholder="nombre">
 
         <input type="submit" value="Registrar">
-    </form>
+    </form>   --}}

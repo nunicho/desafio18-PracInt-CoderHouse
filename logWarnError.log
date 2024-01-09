@@ -1227,3 +1227,5 @@
 {"level":"info","message":"Acceso a la página de inicio de sesión","timestamp":"2024-01-09T00:43:41.383Z"}
 {"level":"info","message":"Acceso a la página de inicio de sesión","timestamp":"2024-01-09T13:16:37.214Z"}
 {"level":"info","message":"Inicio de sesión exitoso - Usuario: mauricio@gmail.com","timestamp":"2024-01-09T13:16:43.893Z"}
+{"level":"info","message":"Acceso a la página de inicio de sesión","timestamp":"2024-01-09T17:08:35.759Z"}
+{"level":"info","message":"Inicio de sesión exitoso - Usuario: mauricio@gmail.com","timestamp":"2024-01-09T17:08:42.317Z"}

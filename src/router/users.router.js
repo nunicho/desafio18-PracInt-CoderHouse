@@ -3,35 +3,102 @@ const router = Router();
 const multer = require("multer");
 const UsersController = require("../controllers/users.controller.js");
 
+
 // ---------------- MULTER ----------------------------///
 
-// Configuración de Multer
-const storage = multer.diskStorage({
+const storageDocuments = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "./src/uploads/"); // Asegúrate de tener un directorio 'uploads' en tu proyecto
+    cb(null, "./src/uploads/documents");
   },
   filename: function (req, file, cb) {
-    const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1E9);
+    const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
     cb(null, file.fieldname + "-" + uniqueSuffix + "-" + file.originalname);
   },
 });
 
-const upload = multer({ storage: storage });
+const storageProducts = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "./src/uploads/products");
+  },
+  filename: function (req, file, cb) {
+    const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
+    cb(null, file.fieldname + "-" + uniqueSuffix + "-" + file.originalname);
+  },
+});
 
-// Ruta para subir documentos
-router.post("/:id/documents", upload.single("foto"), async (req, res) => {
+const storageProfiles = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "./src/uploads/profiles");
+  },
+  filename: function (req, file, cb) {
+    const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
+    cb(null, file.fieldname + "-" + uniqueSuffix + "-" + file.originalname);
+  },
+});
+
+const uploadDocuments = multer({ storage: storageDocuments });
+
+const uploadProducts = multer({ storage: storageProducts });
+
+const uploadProfiles = multer({ storage: storageProfiles });
+
+
+router.post("/:id/documents", uploadDocuments.single("foto"), async (req, res) => {
   try {
     const userId = req.params.id;
     const file = req.file;
 
-    const updatedUser = await UsersController.handleDocumentUpload(userId, file);
+    const updatedUser = await UsersController.handleDocumentUpload(
+      userId,
+      file
+    );
 
-    res.status(200).json({ message: "Documento subido exitosamente", user: updatedUser });
+    res
+      .status(200)
+      .json({ message: "Documento subido exitosamente", user: updatedUser });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 });
 
+
+router.post("/:id/documents/products", uploadProducts.single("foto"), async (req, res) => {
+  try {
+    const userId = req.params.id;
+    const file = req.file;
+
+    const updatedUser = await UsersController.handleProductUpload(
+      userId,
+      file
+    );
+
+    res
+      .status(200)
+      .json({ message: "Producto subido exitosamente", user: updatedUser });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+
+router.post("/:id/documents/profiles", uploadProfiles.single("foto"), async (req, res) => {
+    try {
+      const userId = req.params.id;
+      const file = req.file;
+
+      const updatedUser = await UsersController.handleProductUpload(
+        userId,
+        file
+      );
+
+      res
+        .status(200)
+        .json({ message: "Profile subido exitosamente", user: updatedUser });
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  }
+);
 
 // ---------------- PREMIUM ----------------------------///
 
@@ -48,21 +115,26 @@ module.exports = router;
 /*
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, __dirname + "/uploads/");
+    cb(null, "./src/uploads/"); 
   },
   filename: function (req, file, cb) {
-    const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
+    const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1E9);
     cb(null, file.fieldname + "-" + uniqueSuffix + "-" + file.originalname);
   },
 });
 
-const uploadConStorage = multer({ storage: storage });
+const upload = multer({ storage: storage });
 
-router.post("/:id/documents", uploadConStorage.single("foto"), (req, res) => {
-  // req.file is the `avatar` file
-  console.log(req.file);
+router.post("/:id/documents", upload.single("foto"), async (req, res) => {
+  try {
+    const userId = req.params.id;
+    const file = req.file;
 
-  res.status(200).send("Imagen procesada");
+    const updatedUser = await UsersController.handleDocumentUpload(userId, file);
+
+    res.status(200).json({ message: "Documento subido exitosamente", user: updatedUser });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
 });
-
 */

@@ -432,6 +432,7 @@ const updateLastConnectionGithub = async (email) => {
   }
 };
 
+
 const handleDocumentUpload = async (userId, file) => {
   try {
     const user = await UsuarioModelo.findById(userId);
@@ -454,6 +455,28 @@ const handleDocumentUpload = async (userId, file) => {
   }
 };
 
+const handleProductUpload = async (userId, file) => {
+  try {
+    const user = await UsuarioModelo.findById(userId);
+    if (!user) {
+      throw new Error("Usuario no encontrado");
+    }
+    const newDocument = {
+      name: file.originalname,
+      reference: file.path,
+    };
+    user.documents.push(newDocument);
+    await user.save();
+    //return user;
+    const message = `La foto del producto "${newDocument.name}" se ha subido correctamente.`;
+    return { message };
+  } catch (error) {
+    throw new Error(
+      `Error al manejar la subida de la foto de producto: ${error.message}`
+    );
+  }
+};
+
 
 
   module.exports = {
@@ -471,5 +494,6 @@ const handleDocumentUpload = async (userId, file) => {
     updateLastConnection,
     updateLastConnectionGithub,
     handleDocumentUpload,
+    handleProductUpload,
   };
 
