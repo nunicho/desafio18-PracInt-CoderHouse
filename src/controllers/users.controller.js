@@ -325,38 +325,36 @@ const changeUserRole = async (req, res) => {
       });
     }
 
-    // Verificar la existencia de documentos con referencias específicas
-    const hasDni = usuario.documents.some((doc) =>
-      doc.reference.includes("DNI")
-    );
-    const hasCuenta = usuario.documents.some((doc) =>
-      doc.reference.includes("CUENTA")
-    );
-    const hasDomicilio = usuario.documents.some((doc) =>
-      doc.reference.includes("DOMICILIO")
-    );
+    if (usuario.role === "user") {
+      const hasDni = usuario.documents.some((doc) =>
+        doc.reference.includes("DNI")
+      );
+      const hasCuenta = usuario.documents.some((doc) =>
+        doc.reference.includes("CUENTA")
+      );
+      const hasDomicilio = usuario.documents.some((doc) =>
+        doc.reference.includes("DOMICILIO")
+      );
 
-    if (hasDni && hasCuenta && hasDomicilio) {
-      // Cambiar el rol del usuario
-      usuario.role = usuario.role === "user" ? "premium" : "user";
-      await usuario.save();
+      if (!hasDni || !hasCuenta || !hasDomicilio) {      
+        const missingDocuments = [];
+        if (!hasDni) missingDocuments.push("DNI");
+        if (!hasCuenta) missingDocuments.push("CUENTA");
+        if (!hasDomicilio) missingDocuments.push("DOMICILIO");
 
-      res.status(200).json({
-        userId,
-        newRole: usuario.role,
-      });
-    } else {
-      // El usuario no tiene todos los documentos requeridos
-      const missingDocuments = [];
-      if (!hasDni) missingDocuments.push("DNI");
-      if (!hasCuenta) missingDocuments.push("CUENTA");
-      if (!hasDomicilio) missingDocuments.push("DOMICILIO");
-
-      res.status(400).json({
-        error: "Falta presentar documentación requerida",
-        missingDocuments,
-      });
+        return res.status(400).json({
+          error: "Falta presentar documentación requerida",
+          missingDocuments,
+        });
+      }
     }
+    usuario.role = usuario.role === "user" ? "premium" : "user";
+    await usuario.save();
+
+    res.status(200).json({
+      userId,
+      newRole: usuario.role,
+    });
   } catch (error) {
     console.error(error);
     res.status(500).json({
@@ -366,48 +364,68 @@ const changeUserRole = async (req, res) => {
   }
 };
 
-  /*
-const changeUserRole = async (req, res) => {
+  const changeUserRoleEnVista = async (req, res) => {
     try {
       const userId = req.params.id;
+      const { newRole } = req.body;
 
-      if (!mongoose.Types.ObjectId.isValid(userId)) {
-        throw new CustomError(
-          "ERROR_DATOS",
-          "ID inválido",
-          tiposDeError.ERROR_DATOS,
-          "El ID proporcionado no es válido."
-        );
+      if (!["user", "premium"].includes(newRole)) {
+        throw new Error("Rol no válido");
       }
 
       const usuario = await UsuarioModelo.findById(userId);
-
       if (!usuario) {
-        throw new CustomError(
-          "USUARIO_NO_ENCONTRADO",
-          "Usuario no encontrado",
-          tiposDeError.USUARIO_NO_ENCONTRADO,
-          `El usuario con ID ${userId} no existe.`
-        );
+        throw new Error("Usuario no encontrado");
       }
-      
-      usuario.role = usuario.role === "user" ? "premium" : "user";
+
+      if (newRole === "premium") {
+        // Solo verificamos documentos si el usuario está pasando de "user" a "premium"
+        const hasDni = usuario.documents.some((doc) =>
+          doc.reference.includes("DNI")
+        );
+        const hasCuenta = usuario.documents.some((doc) =>
+          doc.reference.includes("CUENTA")
+        );
+        const hasDomicilio = usuario.documents.some((doc) =>
+          doc.reference.includes("DOMICILIO")
+        );
+
+        if (!hasDni || !hasCuenta || !hasDomicilio) {
+          // El usuario no tiene todos los documentos requeridos
+          const missingDocuments = [];
+          if (!hasDni) missingDocuments.push("DNI");
+          if (!hasCuenta) missingDocuments.push("CUENTA");
+          if (!hasDomicilio) missingDocuments.push("DOMICILIO");
+
+          return res.render("cambiaRole", {
+            title: "Error al Cambiar el Rol",
+            success: false,
+            error: "Falta presentar documentación requerida",
+            missingDocuments,
+          });
+        }
+      }
+
+      // Cambiar el rol del usuario
+      usuario.role = newRole;
+
       await usuario.save();
 
-      res.status(200).json({
-        userId,
-        newRole: usuario.role,
-      });
+      req.session.usuario.role = newRole;
+
+      res.redirect(`/`);
     } catch (error) {
-      res.status(error.codigo || tiposDeError.ERROR_INTERNO_SERVIDOR).json({
-        error: "Error inesperado",
-        detalle: error.message,
+      res.render("cambiaRole", {
+        title: "Error al Cambiar el Rol",
+        success: false,
+        error: error.message,
       });
     }
   };
-  */
+  
 
-  const changeUserRoleEnVista = async (req, res) => {
+  /*
+const changeUserRoleEnVista = async (req, res) => {
     try {
       const userId = req.params.id;
       const { newRole } = req.body;
@@ -436,7 +454,7 @@ const changeUserRole = async (req, res) => {
       });
     }
   };
-  
+  */
 
 
 const updateLastConnection = async (email) => {
