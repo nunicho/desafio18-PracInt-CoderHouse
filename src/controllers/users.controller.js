@@ -343,7 +343,7 @@ const changeUserRole = async (req, res) => {
         if (!hasDomicilio) missingDocuments.push("DOMICILIO");
 
         return res.status(400).json({
-          error: "Falta presentar documentación requerida",
+          error: "El usuario no ha terminado de procesar su documentación",
           missingDocuments,
         });
       }
@@ -400,7 +400,7 @@ const changeUserRole = async (req, res) => {
           return res.render("cambiaRole", {
             title: "Error al Cambiar el Rol",
             success: false,
-            error: "Falta presentar documentación requerida",
+            error: "El usuario no ha terminado de procesar su documentación",
             missingDocuments,
           });
         }
