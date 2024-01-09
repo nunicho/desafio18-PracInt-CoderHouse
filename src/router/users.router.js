@@ -7,10 +7,11 @@ const multer = require("multer");
 // Configuración de Multer
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "./uploads/"); // Asegúrate de tener un directorio 'uploads' en tu proyecto
+    cb(null, "./src/uploads/"); // Asegúrate de tener un directorio 'uploads' en tu proyecto
   },
   filename: function (req, file, cb) {
-    cb(null, Date.now() + "_" + file.originalname);
+    const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1E9);
+    cb(null, file.fieldname + "-" + uniqueSuffix + "-" + file.originalname);
   },
 });
 
