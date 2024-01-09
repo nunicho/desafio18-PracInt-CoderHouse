@@ -44,3 +44,21 @@
 {"level":"error","message":"Error al manejar la ruta de logout - Detalle: Cannot read properties of undefined (reading 'email')","timestamp":"2024-01-08T15:58:59.857Z"}
 {"level":"error","message":"Error al manejar la ruta de logout - Detalle: Cannot read properties of undefined (reading 'email')","timestamp":"2024-01-08T18:53:57.664Z"}
 {"level":"error","message":"Error al manejar la ruta de logout - Detalle: modeloUsers is not defined","timestamp":"2024-01-08T19:54:15.127Z"}
+{"level":"error","message":"Error al manejar la ruta de logout - Detalle: Error al actualizar last_connection","timestamp":"2024-01-08T20:29:51.532Z"}
+{"level":"error","message":"Error al manejar la ruta de logout - Detalle: Error al actualizar last_connection","timestamp":"2024-01-08T20:30:40.152Z"}
+{"level":"error","message":"Error al manejar la ruta de logout - Detalle: Error al actualizar last_connection","timestamp":"2024-01-08T20:30:47.793Z"}
+{"level":"error","message":"Error al manejar la ruta de logout - Detalle: Error al actualizar last_connection","timestamp":"2024-01-08T20:31:41.560Z"}
+{"level":"error","message":"Error al manejar la ruta de logout - Detalle: Error al actualizar last_connection","timestamp":"2024-01-08T20:32:28.072Z"}
+{"level":"error","message":"Error al manejar la ruta de logout - Detalle: Error al actualizar last_connection","timestamp":"2024-01-08T22:59:24.938Z"}
+{"level":"error","message":"Error al manejar la ruta de logout - Detalle: usuarioGithubController is not defined","timestamp":"2024-01-08T23:09:37.316Z"}
+{"level":"error","message":"Error al manejar la ruta de logout - Detalle: Cannot read properties of undefined (reading 'email')","timestamp":"2024-01-08T23:17:01.820Z"}
+{"level":"error","message":"Error al manejar la ruta de logout - Detalle: Error al actualizar last_connection","timestamp":"2024-01-08T23:43:25.802Z"}
+{"level":"error","message":"Error al manejar la ruta de logout - Detalle: Cannot read properties of undefined (reading 'email')","timestamp":"2024-01-08T23:48:23.378Z"}
+{"level":"error","message":"Error al manejar la ruta de logout - Detalle: Cannot read properties of undefined (reading 'email')","timestamp":"2024-01-08T23:48:51.060Z"}
+{"level":"error","message":"Error al manejar la ruta de logout - Detalle: Cannot read properties of undefined (reading 'email')","timestamp":"2024-01-08T23:50:27.303Z"}
+{"level":"error","message":"Error al manejar la ruta de logout - Detalle: Error al actualizar last_connection","timestamp":"2024-01-09T00:01:15.403Z"}
+{"level":"error","message":"Error al manejar la ruta de logout - Detalle: updateLastConnectionGithub is not defined","timestamp":"2024-01-09T00:15:56.246Z"}
+{"level":"error","message":"Error al manejar la ruta de logout - Detalle: updateLastConnectionGithub is not defined","timestamp":"2024-01-09T00:16:54.610Z"}
+{"level":"error","message":"Error al manejar la ruta de logout - Detalle: updateLastConnectionGithub is not defined","timestamp":"2024-01-09T00:24:00.261Z"}
+{"level":"error","message":"Error al manejar la ruta de logout - Detalle: Error al actualizar last_connection en GitHub","timestamp":"2024-01-09T00:24:59.216Z"}
+{"level":"error","message":"Error al manejar la ruta de logout - Detalle: Error al actualizar last_connection en GitHub","timestamp":"2024-01-09T00:38:00.061Z"}

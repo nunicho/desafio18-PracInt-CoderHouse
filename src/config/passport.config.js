@@ -21,91 +21,88 @@ const usersController = require("../controllers/users.controller.js");
 
 
 const inicializaPassport = () => {
-  
   passport.use(
-  'registro',
-  new local.Strategy(
-    {
-      usernameField: 'email',
-      passReqToCallback: true,
-    },
-    async (req, username, password, done) => {
-      try {
-        let { first_name, last_name, email, age, role } = req.body;
+    "registro",
+    new local.Strategy(
+      {
+        usernameField: "email",
+        passReqToCallback: true,
+      },
+      async (req, username, password, done) => {
+        try {
+          let { first_name, last_name, email, age, role } = req.body;
 
-        if (!first_name || !last_name || !age || !email || !password) {
-          return done(null, false, {
-            message: 'Por favor, complete todos los campos',
+          if (!first_name || !last_name || !age || !email || !password) {
+            return done(null, false, {
+              message: "Por favor, complete todos los campos",
+            });
+          }
+
+          age = parseInt(age);
+          if (isNaN(age) || age <= 13 || age >= 120) {
+            return done(null, false, {
+              message: "La edad debe ser mayor a 13 y menor a 120",
+            });
+          }
+
+          let existe = await modeloUsers.findOne({ email });
+          if (existe) {
+            return done(null, false, {
+              message: "El correo electrónico ya está registrado",
+            });
+          }
+
+          const cartId = generateCustomCartId();
+
+          let usuario = await usersController.createUser({
+            first_name,
+            last_name,
+            email,
+            age,
+            password,
+            cart: cartId,
+            role,
+          });
+
+          return done(null, usuario);
+        } catch (error) {
+          return done(error, false, {
+            message: "Ocurrió un error durante el registro.",
           });
         }
-
-        age = parseInt(age);
-        if (isNaN(age) || age <= 13 || age >= 120) {
-          return done(null, false, {
-            message: 'La edad debe ser mayor a 13 y menor a 120',
-          });
-        }
-
-        let existe = await modeloUsers.findOne({ email });
-        if (existe) {
-          return done(null, false, {
-            message: 'El correo electrónico ya está registrado',
-          });
-        }
-
-        const cartId = generateCustomCartId();
-
-        let usuario = await usersController.createUser({
-          first_name,
-          last_name,
-          email,
-          age,
-          password,
-          cart: cartId,
-          role,
-        });
-
-        return done(null, usuario);
-      } catch (error) {
-        return done(error, false, {
-          message: 'Ocurrió un error durante el registro.',
-        });
       }
-    }
-  )
-);
-
+    )
+  );
 passport.use(
-  'loginLocal',
+  "loginLocal",
   new local.Strategy(
     {
-      usernameField: 'email',
+      usernameField: "email",
     },
     async (username, password, done) => {
       try {
         if (!username || !password) {
           return done(null, false, {
-            message: 'Faltan datos',
-            detalle: 'Contacte a RRHH',
+            message: "Faltan datos",
+            detalle: "Contacte a RRHH",
           });
         }
 
         let usuario = await usersController.getUserByEmail(username);
         if (!usuario) {
           return done(null, false, {
-            message: 'Credenciales incorrectas',
-            detalle: 'Vuelva a ingresar los datos',
+            message: "Credenciales incorrectas",
+            detalle: "Vuelva a ingresar los datos",
           });
         } else {
           if (!util.validaHash(usuario, password)) {
             return done(null, false, {
-              message: 'Clave inválida',
-              detalle: 'Vuelva a ingresar los datos',
+              message: "Clave inválida",
+              detalle: "Vuelva a ingresar los datos",
             });
           }
         }
 
-        // Actualiza la propiedad last_connection antes de llamar a done
         usuario.last_connection = new Date();
         await usuario.save();
 
@@ -124,136 +121,40 @@ passport.use(
     }
   )
 );
-
-
-  /*
-  passport.use(
-   "registro",
-   new local.Strategy(
-     {
-       usernameField: "email",
-       passReqToCallback: true,
-     },
-     async (req, username, password, done) => {
-       try {
-         let { first_name, last_name, email, age, role } = req.body;
-
-         if (!first_name || !last_name || !age || !email || !password) {
-           return done(null, false, {
-             message: "Por favor, complete todos los campos",
-           });
-         }
-
-         age = parseInt(age);
-         if (isNaN(age) || age <= 13 || age >= 120) {
-           return done(null, false, {
-             message: "La edad debe ser mayor a 13 y menor a 120",
-           });
-         }
-
-         let existe = await modeloUsers.findOne({ email });
-         if (existe) {
-           return done(null, false, {
-             message: "El correo electrónico ya está registrado",
-           });
-         }
-
-         const cartId = generateCustomCartId();
-
-         let usuario = await usersController.createUser({
-           first_name,
-           last_name,
-           email,
-           age,
-           password, // No necesitas volver a encriptar aquí
-           cart: cartId,
-           role,
-         });
-
-         return done(null, usuario);
-       } catch (error) {
-         return done(error, false, {
-           message: "Ocurrió un error durante el registro.",
-         });
-       }
-     }
-   )
- );
-
  passport.use(
-   "loginLocal",
-   new local.Strategy(
+   "loginGithub",
+   new github.Strategy(
      {
-       usernameField: "email",
+       clientID: config.CLIENT_ID,
+       clientSecret: config.CLIENT_SECRECT,
+       callbackURL: config.CALLBACK_URL,
      },
-     async (username, password, done) => {
+     async (token, tokenRefresh, profile, done) => {
        try {
-         if (!username || !password) {
-           return done(null, false, {
-             message: "Faltan datos",
-             detalle: "Contacte a RRHH",
-           });
-         }
-
-         let usuario = await usersController.getUserByEmail(username);
+         let usuario = await modeloUsuariosGithub.findOne({
+           email: profile._json.email,
+         });
          if (!usuario) {
-           return done(null, false, {
-             message: "Credenciales incorrectas",
-             detalle: "Vuelva a ingresar los datos",
+           usuario = await modeloUsuariosGithub.create({
+             nombre: profile._json.name,
+             email: profile._json.email,
+             github: profile,
+             role: "user",
            });
-         } else {
-           if (!util.validaHash(usuario, password)) {
-             return done(null, false, {
-               message: "Clave inválida",
-               detalle: "Vuelva a ingresar los datos",
-             });
-           }
          }
 
-         usuario = {
-           nombre: usuario.first_name,
-           email: usuario.email,
-           _id: usuario._id,
-           role: usuario.role,
-         };
+         usuario.last_connection = new Date();
+         await usuario.save();
 
-         return done(null, usuario);
+         done(null, usuario);
        } catch (error) {
          return done(error);
        }
      }
    )
  );
-*/
-  passport.use(
-    "loginGithub",
-    new github.Strategy(
-      {
-        clientID: config.CLIENT_ID,
-        clientSecret: config.CLIENT_SECRECT,
-        callbackURL: config.CALLBACK_URL,
-      },
-      async (token, tokenRefresh, profile, done) => {
-        try {
-          let usuario = await modeloUsuariosGithub.findOne({
-            email: profile._json.email,
-          });
-          if (!usuario) {
-            usuario = await modeloUsuariosGithub.create({
-              nombre: profile._json.name,
-              email: profile._json.email,
-              github: profile,
-              role: "user",
-            });
-          }
+  
 
-          done(null, usuario);
-        } catch (error) {
-          return done(error);
-        }
-      }
-    )
-  );
 
   passport.serializeUser((usuario, done) => {
     return done(null, usuario._id);

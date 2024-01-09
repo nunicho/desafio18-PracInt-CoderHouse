@@ -1129,3 +1129,99 @@
 {"level":"info","message":"Acceso a la página de inicio de sesión","timestamp":"2024-01-08T19:25:13.743Z"}
 {"level":"info","message":"Inicio de sesión exitoso - Usuario: tetera@gmail.com","timestamp":"2024-01-08T19:53:34.749Z"}
 {"level":"error","message":"Error al manejar la ruta de logout - Detalle: modeloUsers is not defined","timestamp":"2024-01-08T19:54:15.126Z"}
+{"level":"info","message":"Logout exitoso - Mail: tetera@gmail.com","timestamp":"2024-01-08T20:16:50.985Z"}
+{"level":"info","message":"Acceso a la página de inicio de sesión","timestamp":"2024-01-08T20:16:51.391Z"}
+{"level":"info","message":"Inicio de sesión exitoso - Usuario: mauricio@gmail.com","timestamp":"2024-01-08T20:17:58.603Z"}
+{"level":"info","message":"Logout exitoso - Mail: mauricio@gmail.com","timestamp":"2024-01-08T20:28:41.008Z"}
+{"level":"info","message":"Acceso a la página de inicio de sesión","timestamp":"2024-01-08T20:28:41.412Z"}
+{"level":"error","message":"Error al manejar la ruta de logout - Detalle: Error al actualizar last_connection","timestamp":"2024-01-08T20:29:51.531Z"}
+{"level":"error","message":"Error al manejar la ruta de logout - Detalle: Error al actualizar last_connection","timestamp":"2024-01-08T20:30:40.150Z"}
+{"level":"info","message":"Acceso exitoso al perfil - Usuario: nunicho@yahoo.com.ar","timestamp":"2024-01-08T20:30:44.225Z"}
+{"level":"error","message":"Error al manejar la ruta de logout - Detalle: Error al actualizar last_connection","timestamp":"2024-01-08T20:30:47.792Z"}
+{"level":"error","message":"Error al manejar la ruta de logout - Detalle: Error al actualizar last_connection","timestamp":"2024-01-08T20:31:41.560Z"}
+{"level":"info","message":"Acceso a la página de inicio de sesión","timestamp":"2024-01-08T20:32:05.812Z"}
+{"level":"info","message":"Acceso a la página de inicio de sesión","timestamp":"2024-01-08T20:32:13.209Z"}
+{"level":"error","message":"Error al manejar la ruta de logout - Detalle: Error al actualizar last_connection","timestamp":"2024-01-08T20:32:28.071Z"}
+{"level":"info","message":"Acceso a la página de inicio de sesión","timestamp":"2024-01-08T22:21:50.308Z"}
+{"level":"info","message":"Logout exitoso - Mail: nunicho@yahoo.com.ar ","timestamp":"2024-01-08T22:22:00.742Z"}
+{"level":"info","message":"Acceso a la página de inicio de sesión","timestamp":"2024-01-08T22:22:00.931Z"}
+{"level":"info","message":"Logout exitoso - Mail: nunicho@yahoo.com.ar ","timestamp":"2024-01-08T22:58:18.998Z"}
+{"level":"info","message":"Acceso a la página de inicio de sesión","timestamp":"2024-01-08T22:58:19.227Z"}
+{"level":"error","message":"Error al manejar la ruta de logout - Detalle: Error al actualizar last_connection","timestamp":"2024-01-08T22:59:24.936Z"}
+{"level":"info","message":"Logout exitoso - Mail: nunicho@yahoo.com.ar ","timestamp":"2024-01-08T23:00:19.325Z"}
+{"level":"info","message":"Acceso a la página de inicio de sesión","timestamp":"2024-01-08T23:00:19.531Z"}
+{"level":"error","message":"Error al manejar la ruta de logout - Detalle: usuarioGithubController is not defined","timestamp":"2024-01-08T23:09:37.313Z"}
+{"level":"info","message":"Logout exitoso - Mail: nunicho@yahoo.com.ar ","timestamp":"2024-01-08T23:11:57.546Z"}
+{"level":"info","message":"Acceso a la página de inicio de sesión","timestamp":"2024-01-08T23:11:57.749Z"}
+{"level":"info","message":"Inicio de sesión exitoso - Usuario: mauricio@gmail.com","timestamp":"2024-01-08T23:12:04.925Z"}
+{"level":"info","message":"Logout exitoso - Mail: mauricio@gmail.com ","timestamp":"2024-01-08T23:12:07.830Z"}
+{"level":"info","message":"Acceso a la página de inicio de sesión","timestamp":"2024-01-08T23:12:08.020Z"}
+{"level":"info","message":"Logout exitoso - Mail: nunicho@yahoo.com.ar ","timestamp":"2024-01-08T23:15:45.847Z"}
+{"level":"info","message":"Acceso a la página de inicio de sesión","timestamp":"2024-01-08T23:15:46.052Z"}
+{"level":"error","message":"Error al manejar la ruta de logout - Detalle: Cannot read properties of undefined (reading 'email')","timestamp":"2024-01-08T23:17:01.818Z"}
+{"level":"info","message":"Acceso a la página de inicio de sesión","timestamp":"2024-01-08T23:19:26.476Z"}
+{"level":"info","message":"Logout exitoso - Mail: [object Object] ","timestamp":"2024-01-08T23:19:37.701Z"}
+{"level":"info","message":"Acceso a la página de inicio de sesión","timestamp":"2024-01-08T23:43:00.742Z"}
+{"level":"info","message":"Inicio de sesión exitoso - Usuario: mauricio@gmail.com","timestamp":"2024-01-08T23:43:07.538Z"}
+{"level":"info","message":"Logout exitoso - Mail: mauricio@gmail.com","timestamp":"2024-01-08T23:43:10.145Z"}
+{"level":"info","message":"Acceso a la página de inicio de sesión","timestamp":"2024-01-08T23:43:10.518Z"}
+{"level":"info","message":"Acceso a la página de inicio de sesión","timestamp":"2024-01-08T23:43:17.825Z"}
+{"level":"error","message":"Error al manejar la ruta de logout - Detalle: Error al actualizar last_connection","timestamp":"2024-01-08T23:43:25.801Z"}
+{"level":"info","message":"Logout exitoso - Mail: nunicho@yahoo.com.ar ","timestamp":"2024-01-08T23:47:38.576Z"}
+{"level":"info","message":"Acceso a la página de inicio de sesión","timestamp":"2024-01-08T23:47:38.790Z"}
+{"level":"error","message":"Error al manejar la ruta de logout - Detalle: Cannot read properties of undefined (reading 'email')","timestamp":"2024-01-08T23:48:23.377Z"}
+{"level":"error","message":"Error al manejar la ruta de logout - Detalle: Cannot read properties of undefined (reading 'email')","timestamp":"2024-01-08T23:48:51.059Z"}
+{"level":"error","message":"Error al manejar la ruta de logout - Detalle: Cannot read properties of undefined (reading 'email')","timestamp":"2024-01-08T23:50:27.302Z"}
+{"level":"info","message":"Acceso a la página de inicio de sesión","timestamp":"2024-01-08T23:51:02.613Z"}
+{"level":"info","message":"Inicio de sesión exitoso - Usuario: mauricio@gmail.com","timestamp":"2024-01-08T23:51:08.195Z"}
+{"level":"info","message":"Logout exitoso - Mail: mauricio@gmail.com ","timestamp":"2024-01-08T23:51:10.392Z"}
+{"level":"info","message":"Acceso a la página de inicio de sesión","timestamp":"2024-01-08T23:51:10.577Z"}
+{"level":"info","message":"Acceso a la página de inicio de sesión","timestamp":"2024-01-08T23:51:25.537Z"}
+{"level":"info","message":"Logout exitoso - Mail: nunicho@yahoo.com.ar ","timestamp":"2024-01-08T23:51:35.744Z"}
+{"level":"info","message":"Acceso a la página de inicio de sesión","timestamp":"2024-01-08T23:51:35.939Z"}
+{"level":"info","message":"Inicio de sesión exitoso - Usuario: mauricio@gmail.com","timestamp":"2024-01-08T23:53:06.363Z"}
+{"level":"info","message":"Logout exitoso - Mail: mauricio@gmail.com","timestamp":"2024-01-08T23:53:10.171Z"}
+{"level":"info","message":"Acceso a la página de inicio de sesión","timestamp":"2024-01-08T23:53:10.560Z"}
+{"level":"info","message":"Acceso a la página de inicio de sesión","timestamp":"2024-01-09T00:01:07.139Z"}
+{"level":"info","message":"Inicio de sesión exitoso - Usuario: mauricio@gmail.com","timestamp":"2024-01-09T00:01:13.533Z"}
+{"level":"error","message":"Error al manejar la ruta de logout - Detalle: Error al actualizar last_connection","timestamp":"2024-01-09T00:01:15.402Z"}
+{"level":"info","message":"Acceso exitoso al perfil - Usuario: mauricio@gmail.com","timestamp":"2024-01-09T00:15:52.827Z"}
+{"level":"error","message":"Error al manejar la ruta de logout - Detalle: updateLastConnectionGithub is not defined","timestamp":"2024-01-09T00:15:56.246Z"}
+{"level":"info","message":"Logout exitoso - Mail: mauricio@gmail.com ","timestamp":"2024-01-09T00:16:20.491Z"}
+{"level":"info","message":"Acceso a la página de inicio de sesión","timestamp":"2024-01-09T00:16:20.754Z"}
+{"level":"error","message":"Error al manejar la ruta de logout - Detalle: updateLastConnectionGithub is not defined","timestamp":"2024-01-09T00:16:54.608Z"}
+{"level":"info","message":"Logout exitoso - Mail: nunicho@yahoo.com.ar","timestamp":"2024-01-09T00:18:40.205Z"}
+{"level":"info","message":"Acceso a la página de inicio de sesión","timestamp":"2024-01-09T00:18:40.597Z"}
+{"level":"info","message":"Logout exitoso - Mail: nunicho@yahoo.com.ar","timestamp":"2024-01-09T00:20:50.602Z"}
+{"level":"info","message":"Acceso a la página de inicio de sesión","timestamp":"2024-01-09T00:20:50.987Z"}
+{"level":"info","message":"Inicio de sesión exitoso - Usuario: mauricio@gmail.com","timestamp":"2024-01-09T00:23:57.347Z"}
+{"level":"error","message":"Error al manejar la ruta de logout - Detalle: updateLastConnectionGithub is not defined","timestamp":"2024-01-09T00:24:00.261Z"}
+{"level":"error","message":"Error al manejar la ruta de logout - Detalle: Error al actualizar last_connection en GitHub","timestamp":"2024-01-09T00:24:59.215Z"}
+{"level":"info","message":"Logout exitoso - Mail: mauricio@gmail.com","timestamp":"2024-01-09T00:28:19.719Z"}
+{"level":"info","message":"Acceso a la página de inicio de sesión","timestamp":"2024-01-09T00:28:20.139Z"}
+{"level":"info","message":"Logout exitoso - Mail: nunicho@yahoo.com.ar","timestamp":"2024-01-09T00:28:31.846Z"}
+{"level":"info","message":"Acceso a la página de inicio de sesión","timestamp":"2024-01-09T00:28:32.219Z"}
+{"level":"info","message":"Inicio de sesión exitoso - Usuario: mauricio@gmail.com","timestamp":"2024-01-09T00:31:08.084Z"}
+{"level":"info","message":"Logout exitoso - Mail: mauricio@gmail.com","timestamp":"2024-01-09T00:31:40.524Z"}
+{"level":"info","message":"Acceso a la página de inicio de sesión","timestamp":"2024-01-09T00:31:40.916Z"}
+{"level":"info","message":"Logout exitoso - Mail: nunicho@yahoo.com.ar","timestamp":"2024-01-09T00:33:40.485Z"}
+{"level":"info","message":"Acceso a la página de inicio de sesión","timestamp":"2024-01-09T00:33:40.857Z"}
+{"level":"info","message":"Inicio de sesión exitoso - Usuario: mauricio@gmail.com","timestamp":"2024-01-09T00:37:56.814Z"}
+{"level":"error","message":"Error al manejar la ruta de logout - Detalle: Error al actualizar last_connection en GitHub","timestamp":"2024-01-09T00:38:00.061Z"}
+{"level":"info","message":"Logout exitoso - Mail: mauricio@gmail.com","timestamp":"2024-01-09T00:39:26.508Z"}
+{"level":"info","message":"Acceso a la página de inicio de sesión","timestamp":"2024-01-09T00:39:26.887Z"}
+{"level":"info","message":"Logout exitoso - Mail: nunicho@yahoo.com.ar","timestamp":"2024-01-09T00:39:39.377Z"}
+{"level":"info","message":"Acceso a la página de inicio de sesión","timestamp":"2024-01-09T00:39:39.796Z"}
+{"level":"info","message":"Inicio de sesión exitoso - Usuario: mauricio@gmail.com","timestamp":"2024-01-09T00:39:45.866Z"}
+{"level":"info","message":"Logout exitoso - Mail: mauricio@gmail.com","timestamp":"2024-01-09T00:39:48.036Z"}
+{"level":"info","message":"Acceso a la página de inicio de sesión","timestamp":"2024-01-09T00:39:48.407Z"}
+{"level":"info","message":"Logout exitoso - Mail: nunicho@yahoo.com.ar","timestamp":"2024-01-09T00:40:34.939Z"}
+{"level":"info","message":"Acceso a la página de inicio de sesión","timestamp":"2024-01-09T00:40:35.308Z"}
+{"level":"info","message":"Inicio de sesión exitoso - Usuario: mauricio@gmail.com","timestamp":"2024-01-09T00:41:29.516Z"}
+{"level":"info","message":"Logout exitoso - Mail: mauricio@gmail.com","timestamp":"2024-01-09T00:41:56.434Z"}
+{"level":"info","message":"Acceso a la página de inicio de sesión","timestamp":"2024-01-09T00:41:56.804Z"}
+{"level":"info","message":"Logout exitoso - Mail: nunicho@yahoo.com.ar","timestamp":"2024-01-09T00:43:32.877Z"}
+{"level":"info","message":"Acceso a la página de inicio de sesión","timestamp":"2024-01-09T00:43:33.269Z"}
+{"level":"info","message":"Inicio de sesión exitoso - Usuario: mauricio@gmail.com","timestamp":"2024-01-09T00:43:38.552Z"}
+{"level":"info","message":"Logout exitoso - Mail: mauricio@gmail.com","timestamp":"2024-01-09T00:43:40.996Z"}
+{"level":"info","message":"Acceso a la página de inicio de sesión","timestamp":"2024-01-09T00:43:41.383Z"}
