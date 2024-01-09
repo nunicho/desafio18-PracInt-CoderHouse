@@ -432,6 +432,15 @@ const updateLastConnectionGithub = async (email) => {
   }
 };
 
+const handleDocumentUpload = async (userId, file) => {
+  try {
+   console.log(`Documento subido para el usuario ${userId}:`, file);    
+  } catch (error) {
+    console.error("Error al manejar la subida del documento:", error);
+    throw error;
+  }
+};
+
 
   module.exports = {
     createUser,
@@ -447,5 +456,6 @@ const updateLastConnectionGithub = async (email) => {
     changeUserRoleEnVista,
     updateLastConnection,
     updateLastConnectionGithub,
+    handleDocumentUpload,
   };
 
