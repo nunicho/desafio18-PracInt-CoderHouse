@@ -1,6 +1,7 @@
 const Router = require("express").Router;
 const router = Router();
 const multer = require("multer");
+const UsersController = require("../controllers/users.controller.js");
 
 // ---------------- MULTER ----------------------------///
 
@@ -20,17 +21,14 @@ const upload = multer({ storage: storage });
 // Ruta para subir documentos
 router.post("/:id/documents", upload.single("foto"), async (req, res) => {
   try {
-    // Manejar la lógica de la subida del documento aquí, si es necesario
-    console.log(req.file); // Detalles del archivo subido
-    console.log(req.body); // Datos del formulario, si los hay
+    const userId = req.params.id;
+    const file = req.file;
 
-    // Llamar a la función en tu controlador para manejar la lógica específica
-    await UsersController.handleDocumentUpload(req.params.id, req.file);
+    const updatedUser = await UsersController.handleDocumentUpload(userId, file);
 
-    res.status(200).send("Documento procesado correctamente");
+    res.status(200).json({ message: "Documento subido exitosamente", user: updatedUser });
   } catch (error) {
-    console.error("Error al procesar el documento:", error);
-    res.status(500).send("Error interno del servidor");
+    res.status(500).json({ error: error.message });
   }
 });
 
@@ -38,7 +36,7 @@ router.post("/:id/documents", upload.single("foto"), async (req, res) => {
 // ---------------- PREMIUM ----------------------------///
 
 
-const UsersController = require("../controllers/users.controller.js");
+
 router.get("/premium/:id", UsersController.getUserRoleById);
 
 router.post("/premium/:id/changeRole", UsersController.changeUserRole);

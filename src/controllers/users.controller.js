@@ -434,12 +434,26 @@ const updateLastConnectionGithub = async (email) => {
 
 const handleDocumentUpload = async (userId, file) => {
   try {
-   console.log(`Documento subido para el usuario ${userId}:`, file);    
+    const user = await UsuarioModelo.findById(userId);
+    if (!user) {
+      throw new Error("Usuario no encontrado");
+    }  
+    const newDocument = {
+      name: file.originalname,
+      reference: file.path, 
+    };
+    user.documents.push(newDocument);
+    await user.save();
+    //return user;
+     const message = `El documento "${newDocument.name}" se ha subido correctamente.`;
+     return {message };
   } catch (error) {
-    console.error("Error al manejar la subida del documento:", error);
-    throw error;
+    throw new Error(
+      `Error al manejar la subida de documentos: ${error.message}`
+    );
   }
 };
+
 
 
   module.exports = {
