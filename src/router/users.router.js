@@ -36,7 +36,7 @@ router.post(
       const userId = req.params.id;
       const file = req.file;
 
-      const updatedUser = await UsersController.handleProductUpload(
+      const updatedUser = await UsersController.handleDocumentUpload(
         userId,
         file
       );
@@ -58,7 +58,7 @@ router.post(
       const userId = req.params.id;
       const file = req.file;
 
-      const updatedUser = await UsersController.handleProductUpload(
+      const updatedUser = await UsersController.handleDocumentUpload(
         userId,
         file
       );
@@ -66,6 +66,78 @@ router.post(
       res
         .status(200)
         .json({ message: "Profile subido exitosamente", user: updatedUser });
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  }
+);
+
+
+router.post(
+  "/:id/documents/identificacion",
+  multerMiddleware.uploadIdentificacion.single("foto"),
+  async (req, res) => {
+    try {
+      const userId = req.params.id;
+      const file = req.file;
+
+      const updatedUser = await UsersController.handleDocumentUpload(
+        userId,
+        file
+      );
+
+      res
+        .status(200)
+        .json({ message: "Identificacion subida exitosamente", user: updatedUser });
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  }
+);
+
+
+router.post(
+  "/:id/documents/domicilio",
+  multerMiddleware.uploadDomicilio.single("foto"),
+  async (req, res) => {
+    try {
+      const userId = req.params.id;
+      const file = req.file;
+
+      const updatedUser = await UsersController.handleDocumentUpload(
+        userId,
+        file
+      );
+
+      res
+        .status(200)
+        .json({
+          message: "Comprobante de domicilio subido exitosamente",
+          user: updatedUser,
+        });
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  }
+);
+
+router.post(
+  "/:id/documents/cuenta",
+  multerMiddleware.uploadCuenta.single("foto"),
+  async (req, res) => {
+    try {
+      const userId = req.params.id;
+      const file = req.file;
+
+      const updatedUser = await UsersController.handleDocumentUpload(
+        userId,
+        file
+      );
+
+      res.status(200).json({
+        message: "Estado de cuenta subido exitosamente",
+        user: updatedUser,
+      });
     } catch (error) {
       res.status(500).json({ error: error.message });
     }
