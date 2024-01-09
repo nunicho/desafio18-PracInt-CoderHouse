@@ -14,15 +14,15 @@ Mauricio Javier ALONSO
 
 ## 3. TITULO DESAFIO ENTREGABLE: 
 
-Módulos de testing para proyecto final. 
+Práctica de Integración sobre tu ecommerce. 
 
 ## 4. N° DESAFIO ENTREGABLE: 
 
-N° 17
+N° 18
 
 ## 5. CONSIGNA DESAFIO ENTREGABLE: 
 
-Realizar módulos de testing para el proyecto principal, utilizando los módulos mocha+chai+supertest    
+USER PREMIUM - MULTER   
 
 
 ## 6. Usuario Administrador:
