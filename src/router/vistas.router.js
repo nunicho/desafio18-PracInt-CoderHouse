@@ -708,6 +708,11 @@ router.post(
 );
 
 
+//---------------------------------------------------------------- MULTER ---------------//
+
+router.get("/subirArchivos", (req, res) => {
+  res.render("subirArchivos");
+});
 
 module.exports = router;
 

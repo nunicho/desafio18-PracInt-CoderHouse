@@ -127,6 +127,24 @@ app.use("/api/sessions", sessionsRouter);
 app.use("/api/users", usersRouter);
 app.use("/", vistasRouter);
 
+//MULTER
+const multer = require("multer");
+const upload = multer({ dest: "src/uploads/" });
+
+app.post('api/users/:id/documents', upload.single('avatar'), (req,res)=>  {
+  console.log(req.file)
+
+console.log(req.body);
+    res.status(200).send('Imagen procesada')
+})
+
+
+app.post("/profile", upload.single("avatar"), function (req, res, next) {
+  // req.file is the `avatar` file
+  // req.body will hold the text fields, if there were any
+});
+
+
 // HANDLEBARS - inicialización
 const hbs = handlebars.create({
   helpers: {
