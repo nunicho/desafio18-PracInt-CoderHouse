@@ -306,6 +306,68 @@
 
   
 const changeUserRole = async (req, res) => {
+  try {
+    const userId = req.params.id;
+
+    if (!mongoose.Types.ObjectId.isValid(userId)) {
+      return res.status(400).json({
+        error: "ID inválido",
+        detalle: "El ID proporcionado no es válido.",
+      });
+    }
+
+    const usuario = await UsuarioModelo.findById(userId);
+
+    if (!usuario) {
+      return res.status(404).json({
+        error: "Usuario no encontrado",
+        detalle: `El usuario con ID ${userId} no existe.`,
+      });
+    }
+
+    // Verificar la existencia de documentos con referencias específicas
+    const hasDni = usuario.documents.some((doc) =>
+      doc.reference.includes("DNI")
+    );
+    const hasCuenta = usuario.documents.some((doc) =>
+      doc.reference.includes("CUENTA")
+    );
+    const hasDomicilio = usuario.documents.some((doc) =>
+      doc.reference.includes("DOMICILIO")
+    );
+
+    if (hasDni && hasCuenta && hasDomicilio) {
+      // Cambiar el rol del usuario
+      usuario.role = usuario.role === "user" ? "premium" : "user";
+      await usuario.save();
+
+      res.status(200).json({
+        userId,
+        newRole: usuario.role,
+      });
+    } else {
+      // El usuario no tiene todos los documentos requeridos
+      const missingDocuments = [];
+      if (!hasDni) missingDocuments.push("DNI");
+      if (!hasCuenta) missingDocuments.push("CUENTA");
+      if (!hasDomicilio) missingDocuments.push("DOMICILIO");
+
+      res.status(400).json({
+        error: "Falta presentar documentación requerida",
+        missingDocuments,
+      });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      error: "Error inesperado",
+      detalle: error.message,
+    });
+  }
+};
+
+  /*
+const changeUserRole = async (req, res) => {
     try {
       const userId = req.params.id;
 
@@ -343,6 +405,7 @@ const changeUserRole = async (req, res) => {
       });
     }
   };
+  */
 
   const changeUserRoleEnVista = async (req, res) => {
     try {
